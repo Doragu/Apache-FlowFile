@@ -23,6 +23,7 @@ services:
   
   nifi:
     build: .
+    image: apache/nifi
     ports:
       - "8080:8080"
   
