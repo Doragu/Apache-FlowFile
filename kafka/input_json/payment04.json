@@ -4,47 +4,47 @@
       "staff_id": 1,
       "rental_id": 15443,
       "amount": 7.99,
-      "payment_date": "2005-08-23 00:44:15",
-      "last_update": "2006-02-15 22:24:08"
+      "payment_date": "2005-08-23 00:44:15.000",
+      "last_update": "2006-02-15 22:24:08.000"
     },
     {
       "customer_id": 599,
       "staff_id": 2,
       "rental_id": 1008,
       "amount": 4.99,
-      "payment_date": "2005-05-31 01:18:56",
-      "last_update": "2006-02-15 22:24:09"
+      "payment_date": "2005-05-31 01:18:56.000",
+      "last_update": "2006-02-15 22:24:09.000"
     },
     {
       "customer_id": 599,
       "staff_id": 1,
       "rental_id": 2272,
       "amount": 1.99,
-      "payment_date": "2005-06-18 06:29:53",
-      "last_update": "2006-02-15 22:24:09"
+      "payment_date": "2005-06-18 06:29:53.000",
+      "last_update": "2006-02-15 22:24:09.000"
     },
     {
       "customer_id": 599,
       "staff_id": 2,
       "rental_id": 3043,
       "amount": 6.99,
-      "payment_date": "2005-06-20 12:38:35",
-      "last_update": "2006-02-15 22:24:09"
+      "payment_date": "2005-06-20 12:38:35.000",
+      "last_update": "2006-02-15 22:24:09.000"
     },
     {
       "customer_id": 599,
       "staff_id": 2,
       "rental_id": 3398,
       "amount": 4.99,
-      "payment_date": "2005-06-21 15:34:38",
-      "last_update": "2006-02-15 22:24:09"
+      "payment_date": "2005-06-21 15:34:38.000",
+      "last_update": "2006-02-15 22:24:09.000"
     },
     {
       "customer_id": 599,
       "staff_id": 1,
       "rental_id": 3429,
       "amount": 6.99,
-      "payment_date": "2005-06-21 18:46:05",
-      "last_update": "2006-02-15 22:24:09"
+      "payment_date": "2005-06-21 18:46:05.000",
+      "last_update": "2006-02-15 22:24:09.000"
     }
    ]

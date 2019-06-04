@@ -29,6 +29,7 @@ def sendToKafka(file):
 
     for line in data:
         producer.send('json', value=line)
+        sleep(0.1)
 
 def checkForNewFiles(before):
     while 1:
