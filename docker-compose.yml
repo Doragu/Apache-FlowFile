@@ -1,13 +1,13 @@
-version: "3"
+version: "3.0"
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:latest
+    image: confluentinc/cp-zookeeper:5.3.1
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
 
   kafka:
-    image: confluentinc/cp-kafka:latest
+    image: confluentinc/cp-kafka:5.3.1
     depends_on:
      - zookeeper
     ports:
@@ -20,46 +20,35 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-  
-  nifi_json_to_sql:
-    build: ./nifi/jsonToSQL
+
+  nifi:
+    build: ./nifi
+    image: apache/nifi:1.9.2
     ports:
      - "8080:8080"
     depends_on:
       - mysql
     links:
       - mysql:db
+    volumes:
+      - ./nifi/files/conf:/opt/nifi/nifi-current/conf/
 
-  nifi_data_aggregation:
-    build: ./nifi/dataAggregation
-    ports:
-      - "8070:8070"
-    environment:
-      - NIFI_WEB_HTTP_PORT=8070
-      - NIFI_CLUSTER_NODE_PROTOCOL_PORT=8072
-    links:
-      - nifi_json_to_sql:nifi1
-  
-  web_input:
+  input_json:
     build: ./kafka
     depends_on:
      - kafka
-    ports:
-     - "5000:5000"
+    volumes:
+      - ./kafka/files/input_json:/kafka/input_json/
 
   mysql:
     restart: always
-    image: mysql/mysql-server:latest
+    image: mysql/mysql-server:8.0.17
     ports:
       - "3306:3306"
     environment:
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypass
       MYSQL_DATABASE: mydb
-
-  db_connection:
-    build: ./mysql
-    depends_on:
-      - mysql
-    links:
-      - mysql:db
+    volumes:
+      - ./mysql/init_scripts:/docker-entrypoint-initdb.d
+      - ./mysql/data/mysql:/var/lib/mysql/
